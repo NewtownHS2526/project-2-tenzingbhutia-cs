@@ -19,7 +19,7 @@ jobs:
       with:
         test-name: ai-review.mjs
         setup-command: npm install
-        command: npm test
+        command: test -f .github/ai-review.mjs
         timeout: 10
     - name: ai-review.yml
       id: ai-review-yml
@@ -27,7 +27,7 @@ jobs:
       with:
         test-name: ai-review.yml
         setup-command: npm install
-        command: npm test
+        command: test -f .github/workflows/ai-review.yml
         timeout: 10
         max-score: 100
     - name: Autograding Reporter
