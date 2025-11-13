@@ -21,7 +21,6 @@ jobs:
         setup-command: npm install
         command: npm test
         timeout: 10
-        max-score: 100
     - name: ai-review.yml
       id: ai-review-yml
       uses: classroom-resources/autograding-command-grader@v1
