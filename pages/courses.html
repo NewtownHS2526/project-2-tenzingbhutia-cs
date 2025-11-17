@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Courses – Project Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      video.bg-video {
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        object-fit: cover;
+        z-index: -1;
+        filter: brightness(0.4) blur(1px);
+      }
+      @keyframes fadeIn {
+        from {opacity:0; transform:translateY(15px);}
+        to {opacity:1; transform:translateY(0);}
+      }
+      .fade-in {animation:fadeIn 1.5s ease-in-out;}
+    </style>
+  </head>
+  <body class="bg-gray-950 text-white font-sans">
+    <video autoplay muted loop class="bg-video">
+      <source src="https://cdn.pixabay.com/video/2018/02/09/14214-255797028_tiny.mp4" type="video/mp4"/>
+    </video>
+    <!-- Navbar -->
+    <header class="bg-black/50 backdrop-blur-lg fixed top-0 left-0 w-full z-10 border-b border-white/10">
+      <nav class="flex justify-between items-center px-8 py-4 text-lg font-medium">
+        <h1 class="text-2xl font-bold text-blue-400">Project Hub</h1>
+        <div class="space-x-6">
+          <a href="index.html" class="hover:text-blue-400 transition">Home</a>
+          <a href="courses.html" class="hover:text-blue-400 transition">Courses</a>
+          <a href="subscription.html" class="hover:text-blue-400 transition">Subscription</a>
+          <a href="about.html" class="hover:text-blue-400 transition">About</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="pt-32 px-8 max-w-5xl mx-auto">
+      <h2 class="text-4xl font-bold mb-8 text-center text-blue-400">Available Courses</h2>
+      <p class="text-center text-gray-300 mb-12">Select a language below to see the full gamified course plan with XP, levels, and challenges!</p>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        <a href="courses/python.html" class="block bg-gray-800 p-6 rounded-2xl hover:scale-105 transition">
+          <h3 class="text-2xl font-semibold text-green-400 mb-2">Python</h3>
+          <p class="text-gray-300">Start your Python journey with missions, challenges, and interactive lessons.</p>
+        </a>
+
+        <a href="courses/java.html" class="block bg-gray-800 p-6 rounded-2xl hover:scale-105 transition">
+          <h3 class="text-2xl font-semibold text-red-400 mb-2">Java</h3>
+          <p class="text-gray-300">Master Java fundamentals and practice coding through gamified projects.</p>
+        </a>
+
+        <a href="courses/cpp.html" class="block bg-gray-800 p-6 rounded-2xl hover:scale-105 transition">
+          <h3 class="text-2xl font-semibold text-yellow-400 mb-2">C++</h3>
+          <p class="text-gray-300">Learn C++ with structured levels, quizzes, and XP-based progression.</p>
+        </a>
+      </div>
+    </main>
+
+    <footer class="bg-black/60 text-center py-6 mt-20 border-t border-white/10">
+      <small class="text-gray-400">&copy; 2025 Project Hub. All rights reserved.</small>
+    </footer>
+  </body>
+</html>

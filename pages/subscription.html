@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Subscription – Project Hub</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* background video */
+    video.bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      filter: brightness(0.35) blur(0.6px);
+    }
+  </style>
+</head>
+<body class="min-h-screen text-white font-sans bg-gray-900">
+
+  <!-- Background video (code-rain style) -->
+  <video autoplay muted loop class="bg-video">
+    <source src="https://cdn.pixabay.com/video/2019/10/10/27725-365890983_tiny.mp4" type="video/mp4" />
+    <!-- fallback if video missing -->
+  </video>
+
+  <!-- Header/Nav -->
+  <header class="fixed top-0 left-0 w-full z-20 bg-black/40 backdrop-blur border-b border-white/10">
+    <nav class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="text-2xl font-bold text-cyan-400">Project Hub</div>
+        <small class="text-sm text-gray-300">Learn • Build • Level Up</small>
+      </div>
+
+      <div class="flex items-center gap-6">
+        <a href="index.html" class="hover:text-cyan-300">Home</a>
+        <a href="courses.html" class="hover:text-cyan-300">Courses</a>
+        <a href="python.html" class="hover:text-cyan-300">Python</a>
+        <button id="restoreBtn" class="bg-transparent border border-white/10 px-3 py-1 rounded text-sm hover:bg-white/5">Restore</button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Page Title -->
+  <main class="pt-28 pb-16">
+    <section class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <h1 class="text-4xl md:text-5xl font-extrabold">Subscription Plans</h1>
+        <p class="text-gray-300 mt-4 max-w-3xl mx-auto">
+          Choose a plan that fits your style. Free gives you basic lessons and
+          community access — Premium unlocks everything: all lessons, projects,
+          certificates, priority help, and special gamified rewards.
+        </p>
+      </div>
+
+      <!-- Plans -->
+      <div class="grid gap-8 grid-cols-1 md:grid-cols-3 items-start">
+
+        <!-- Free Plan -->
+        <div class="bg-gray-800/70 rounded-2xl p-6 shadow-lg">
+          <div class="flex items-center justify-between mb-4">
+            <div>
+              <h3 class="text-2xl font-semibold">Free</h3>
+              <p class="text-sm text-gray-400">Get started — forever free</p>
+            </div>
+            <div class="text-2xl font-bold">$0</div>
+          </div>
+
+          <ul class="text-gray-300 space-y-2 mb-6">
+            <li>✔ Access to core lessons</li>
+            <li>✔ Community forums</li>
+            <li>✔ Basic badges</li>
+            <li class="text-gray-500">✖ Premium projects & certificates</li>
+            <li class="text-gray-500">✖ Priority support</li>
+          </ul>
+
+          <button id="freeBtn" class="w-full bg-transparent border border-white/10 rounded-xl px-4 py-3 hover:bg-white/5">
+            Continue with Free
+          </button>
+        </div>
+
+        <!-- Premium Plan -->
+        <div class="bg-gradient-to-br from-cyan-500/80 to-blue-600/80 rounded-2xl p-6 shadow-2xl transform md:scale-105">
+          <div class="flex items-center justify-between mb-4">
+            <div>
+              <h3 class="text-2xl font-semibold text-white">Premium</h3>
+              <p class="text-sm text-white/90">All access • Certificates • Exclusive projects</p>
+            </div>
+            <div class="text-3xl font-bold text-white">$9.99<span class="text-sm font-medium">/mo</span></div>
+          </div>
+
+          <ul class="text-white/90 space-y-2 mb-6">
+            <li>✔ All courses & projects unlocked</li>
+            <li>✔ Certificate on completion</li>
+            <li>✔ Premium-only project challenges (500 XP)</li>
+            <li>✔ Priority mentor support</li>
+            <li>✔ Exclusive badges & cosmetic profile frames</li>
+          </ul>
+
+          <div class="flex gap-3">
+            <button id="premiumBtn" class="flex-1 bg-black text-white font-semibold px-4 py-3 rounded-xl hover:bg-black/90">
+              Go Premium
+            </button>
+            <button id="trialBtn" class="px-4 py-3 rounded-xl border border-white/20 hover:bg-white/5">
+              Start 7-day Trial
+            </button>
+          </div>
+        </div>
+
+        <!-- Features / Gamified preview -->
+        <div class="bg-gray-800/70 rounded-2xl p-6 shadow-lg">
+          <h3 class="text-2xl font-semibold mb-3">What Premium Unlocks</h3>
+          <div class="space-y-4 text-gray-300">
+            <div>
+              <div class="text-sm text-gray-400">XP Boost</div>
+              <div class="w-full bg-gray-700 h-3 rounded-full mt-1 overflow-hidden">
+                <div id="xpBar" class="h-3 rounded-full bg-gradient-to-r from-yellow-400 to-green-400 w-40%"></div>
+              </div>
+              <div class="text-xs text-gray-400 mt-1">+20% XP on all tasks</div>
+            </div>
+
+            <div>
+              <div class="text-sm text-gray-400">Exclusive Badge</div>
+              <div id="badgeContainer" class="mt-2 flex items-center gap-3">
+                <div id="premiumBadge" class="hidden bg-gradient-to-r from-yellow-300 to-yellow-500 text-black px-3 py-1 rounded-full text-sm font-bold">
+                  ✦ PREMIUM ✦
+                </div>
+                <div id="freeBadge" class="bg-gray-700 px-3 py-1 rounded-full text-sm">
+                  beginner
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div class="text-sm text-gray-400">Priority Support</div>
+              <p class="text-xs text-gray-400 mt-1">Get faster help from mentors and exclusive live sessions.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pricing details + FAQ -->
+      <section class="mt-12 bg-black/40 rounded-2xl p-6">
+        <h4 class="text-xl font-semibold mb-3">Billing & FAQ</h4>
+        <div class="space-y-4 text-gray-300">
+          <div>
+            <strong>How does billing work?</strong>
+            <p class="text-gray-400 text-sm mt-1">This demo simulates purchases locally. To accept real payments, integrate with Stripe or another gateway and replace the simulation code.</p>
+          </div>
+
+          <div>
+            <strong>Can I cancel anytime?</strong>
+            <p class="text-gray-400 text-sm mt-1">Yes — cancel from your account page. Cancellation stops future billing but keeps Premium access until the end of your billing period.</p>
+          </div>
+
+          <div>
+            <strong>What is the trial?</strong>
+            <p class="text-gray-400 text-sm mt-1">The 7-day trial unlocks Premium features for 7 days — no actual payment is taken in this demo implementation.</p>
+          </div>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="text-center py-6 mt-12">
+    <small class="text-gray-400">&copy; 2025 Project Hub — Learn • Build • Level Up</small>
+  </footer>
+
+  <!-- Modal: simulated payment -->
+  <div id="modal" class="fixed inset-0 bg-black/60 hidden items-center justify-center z-30">
+    <div class="bg-gray-900 rounded-2xl w-full max-w-md p-6">
+      <h3 class="text-xl font-semibold mb-2">Simulate Payment</h3>
+      <p class="text-sm text-gray-400 mb-4">This demo simulates subscribing. No real card is charged.</p>
+
+      <label class="block text-gray-300 text-sm mb-1">Email</label>
+      <input id="email" class="w-full bg-gray-800 rounded px-3 py-2 mb-3" placeholder="you@example.com" />
+
+      <label class="block text-gray-300 text-sm mb-1">Card (mock)</label>
+      <input id="card" class="w-full bg-gray-800 rounded px-3 py-2 mb-4" placeholder="4242 4242 4242 4242" />
+
+      <div class="flex justify-between items-center">
+        <button id="payNow" class="bg-cyan-500 text-black font-semibold px-4 py-2 rounded">Pay $9.99</button>
+        <button id="closeModal" class="text-sm text-gray-300 hover:underline">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Elements
+    const premiumBtn = document.getElementById('premiumBtn');
+    const trialBtn = document.getElementById('trialBtn');
+    const freeBtn = document.getElementById('freeBtn');
+    const restoreBtn = document.getElementById('restoreBtn');
+    const modal = document.getElementById('modal');
+    const closeModal = document.getElementById('closeModal');
+    const payNow = document.getElementById('payNow');
+    const premiumBadge = document.getElementById('premiumBadge');
+    const freeBadge = document.getElementById('freeBadge');
+    const xpBar = document.getElementById('xpBar');
+
+    // Utility: update UI according to premium status
+    function updateUI() {
+      const isPremium = localStorage.getItem('projecthub_premium') === 'true';
+      if (isPremium) {
+        premiumBadge.classList.remove('hidden');
+        freeBadge.classList.add('hidden');
+        xpBar.style.width = '85%';
+        premiumBtn.textContent = 'You are Premium';
+        premiumBtn.disabled = true;
+        premiumBtn.classList.add('opacity-80', 'cursor-not-allowed');
+      } else {
+        premiumBadge.classList.add('hidden');
+        freeBadge.classList.remove('hidden');
+        xpBar.style.width = '40%';
+        premiumBtn.textContent = 'Go Premium';
+        premiumBtn.disabled = false;
+        premiumBtn.classList.remove('opacity-80', 'cursor-not-allowed');
+      }
+    }
+
+    // Simulate opening payment modal
+    premiumBtn?.addEventListener('click', () => {
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    });
+
+    closeModal?.addEventListener('click', () => {
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    });
+
+    // Simulate payment success
+    payNow.addEventListener('click', () => {
+      // In a real implementation, verify payment on server and then set premium
+      localStorage.setItem('projecthub_premium', 'true');
+      // Optionally store some meta like email
+      const email = document.getElementById('email').value;
+      if (email) localStorage.setItem('projecthub_email', email);
+
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      updateUI();
+      alert('Payment simulated — Premium unlocked! 🎉');
+    });
+
+    // Trial simulation: set trial with 7-day expiry
+    trialBtn.addEventListener('click', () => {
+      const expiry = Date.now() + 7 * 24 * 60 * 60 * 1000; // 7 days
+      localStorage.setItem('projecthub_trial_expires', expiry.toString());
+      localStorage.setItem('projecthub_premium', 'true');
+      updateUI();
+      alert('7-day trial started — enjoy Premium features!');
+    });
+
+    // Free continue (does not remove premium if already purchased)
+    freeBtn.addEventListener('click', () => {
+      alert('Continuing on Free plan. Consider trying Premium for extra benefits!');
+    });
+
+    // Restore/purchase check (simulated)
+    restoreBtn.addEventListener('click', () => {
+      // In real app, call backend to verify receipts/subscriptions
+      if (localStorage.getItem('projecthub_premium') === 'true') {
+        alert('Premium restored. Welcome back!');
+      } else {
+        alert('No prior purchase found locally. This demo uses localStorage for simulation.');
+      }
+      updateUI();
+    });
+
+    // On load, check trial expiry
+    function checkTrialExpiry() {
+      const expiry = localStorage.getItem('projecthub_trial_expires');
+      if (expiry && Date.now() > parseInt(expiry, 10)) {
+        // trial expired
+        localStorage.removeItem('projecthub_trial_expires');
+        localStorage.removeItem('projecthub_premium'); // revert to free
+      }
+    }
+
+    // init
+    checkTrialExpiry();
+    updateUI();
+  </script>
+</body>
+</html>

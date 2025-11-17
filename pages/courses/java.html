@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Java Course – Project Hub</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-950 text-white font-sans">
+  <!-- Navbar -->
+  <header class="bg-black/50 backdrop-blur-lg fixed top-0 left-0 w-full z-10 border-b border-white/10">
+    <nav class="flex justify-between items-center px-8 py-4 text-lg font-medium">
+      <h1 class="text-2xl font-bold text-red-400">Project Hub</h1>
+      <div class="space-x-6">
+        <a href="../courses.html" class="hover:text-red-400 transition">← Back</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="pt-32 px-8 max-w-5xl mx-auto text-center">
+    <h2 class="text-4xl font-bold mb-6 text-red-400">Java Course</h2>
+    <p class="text-gray-300 mb-10">
+      Embark on your Java journey! Earn XP, level up, and unlock badges as you
+      complete challenges. Each level teaches you practical Java concepts in
+      a fun, interactive way.
+    </p>
+
+    <!-- Gamified Progress -->
+    <div class="bg-gray-800 p-8 rounded-2xl mb-12">
+      <h3 class="text-2xl font-semibold mb-4">Your Java Journey</h3>
+      <div class="relative w-full bg-gray-700 rounded-full h-4">
+        <div
+          class="absolute top-0 left-0 h-4 rounded-full bg-gradient-to-r from-red-400 to-yellow-400"
+          style="width: 20%"
+        ></div>
+      </div>
+      <p class="mt-2 text-sm text-gray-400">Level 1 – 20% complete</p>
+    </div>
+
+    <!-- Course Levels -->
+    <div class="grid md:grid-cols-2 gap-8">
+      <!-- Level 1 -->
+      <a href="java_level1.html" class="block bg-gray-800 p-6 rounded-2xl text-left hover:scale-105 transition">
+        <h4 class="text-xl font-semibold mb-2 text-red-400">🟢 Level 1: Basics</h4>
+        <ul class="text-gray-300 space-y-1">
+          <li>→ Hello World Program</li>
+          <li>→ Variables & Data Types</li>
+          <li>→ Printing & Console Output</li>
+        </ul>
+      </a>
+
+      <!-- Level 2 -->
+      <a href="java_level2.html" class="block bg-gray-800 p-6 rounded-2xl text-left hover:scale-105 transition">
+        <h4 class="text-xl font-semibold mb-2 text-blue-400">🔵 Level 2: Loops & Methods</h4>
+        <ul class="text-gray-300 space-y-1">
+          <li>→ For & While Loops</li>
+          <li>→ Writing Methods</li>
+          <li>→ Basic Problem Solving</li>
+        </ul>
+      </a>
+
+      <!-- Level 3 -->
+      <a href="java_level3.html" class="block bg-gray-800 p-6 rounded-2xl text-left hover:scale-105 transition">
+        <h4 class="text-xl font-semibold mb-2 text-yellow-400">🟡 Level 3: Arrays & Collections</h4>
+        <ul class="text-gray-300 space-y-1">
+          <li>→ Arrays & ArrayLists</li>
+          <li>→ Iterating Collections</li>
+          <li>→ Mini Projects & Challenges</li>
+        </ul>
+      </a>
+
+      <!-- Final Boss Level -->
+      <a href="java_level4.html" class="block bg-red-900/80 p-6 rounded-3xl text-left hover:scale-105 transition border-4 border-red-500 animate-pulse">
+        <h4 class="text-xl font-bold mb-2 text-yellow-400 animate-bounce">⚠️ Final Boss: OOP Challenge</h4>
+        <ul class="text-gray-300 space-y-1">
+          <li>→ Classes & Objects</li>
+          <li>→ Inheritance & Polymorphism</li>
+          <li>→ Build a Mini Java Project</li>
+          <li>→ Danger! Solve it carefully 🛡️</li>
+        </ul>
+      </a>
+    </div>
+  </main>
+
+  <footer class="bg-black/60 text-center py-6 mt-20 border-t border-white/10">
+    <small class="text-gray-400">
+      &copy; 2025 Project Hub. Developed by Tenzing Bhutia. Special thanks to Mr. Esen.
+    </small>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Java Level 4 – Final Boss</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-950 text-white font-sans">
+  <!-- Navbar -->
+  <header class="bg-black/50 backdrop-blur-lg fixed top-0 left-0 w-full z-10 border-b border-white/10">
+    <nav class="flex justify-between items-center px-8 py-4 text-lg font-medium">
+      <h1 class="text-2xl font-bold text-red-400">Project Hub</h1>
+      <div class="space-x-6">
+        <a href="java.html" class="hover:text-red-400 transition">← Back</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="pt-32 px-8 max-w-3xl mx-auto text-center">
+    <h2 class="text-4xl font-bold mb-6 text-yellow-400 animate-bounce">⚠️ Final Boss Challenge</h2>
+    <p class="text-lg text-gray-300 mb-8">
+      Test your Java OOP skills! Solve the challenge carefully. Wrong answers will reset your attempt. Hints are provided.
+    </p>
+
+    <!-- Challenge Box -->
+    <div class="bg-red-900/80 p-8 rounded-3xl border-4 border-red-500 animate-pulse">
+      <h3 class="text-2xl font-semibold mb-4 text-yellow-400">The Challenge:</h3>
+      <p class="text-gray-300 mb-6">
+        You have a class `Monster` in Java. You need to calculate the total damage done by a monster after 3 attacks.  
+        Each attack does <strong>5</strong> damage points.  
+        Write the total damage as the answer.
+      </p>
+
+      <input id="answer" type="number" placeholder="Enter total damage"
+        class="p-3 rounded-lg text-black w-full mb-4 text-center"/>
+      <button id="submit" class="bg-yellow-400 text-black px-6 py-3 rounded-lg font-bold hover:bg-yellow-300 transition">
+        Submit
+      </button>
+
+      <p id="hint" class="text-gray-300 mt-4"></p>
+    </div>
+  </main>
+
+  <script>
+    const correctAnswer = 15;
+    const answerInput = document.getElementById("answer");
+    const submitButton = document.getElementById("submit");
+    const hint = document.getElementById("hint");
+
+    submitButton.addEventListener("click", () => {
+      const userAnswer = parseInt(answerInput.value);
+
+      if (userAnswer === correctAnswer) {
+        hint.innerHTML = '<span class="text-green-400 font-bold">🎉 Correct! You defeated the boss!</span>';
+      } else {
+        hint.innerHTML = '<span class="text-red-400 font-bold">❌ Wrong! Reset and try again. Hint: Multiply damage per attack by number of attacks.</span>';
+        answerInput.value = "";
+        answerInput.focus();
+      }
+    });
+  </script>
+</body>
+</html>
